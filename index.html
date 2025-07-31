@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>💖 National Girlfriend Day 💖 Neon Pink Theme</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=VT323&display=swap');
+
+    * {
+      margin: 0; padding: 0; box-sizing: border-box;
+    }
+
+    body {
+      background: #0a0a0a;
+      color: #ff69b4;
+      font-family: 'VT323', monospace;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 40px 20px;
+      overflow-x: hidden;
+      user-select: none;
+      position: relative;
+      text-align: center;
+    }
+
+    h1 {
+      font-size: 3.8rem;
+      margin-bottom: 10px;
+      color: #ff69b4;
+      text-shadow:
+        0 0 10px #ff69b4,
+        0 0 20px #ff69b4,
+        0 0 30px #ff69b4,
+        0 0 40px #ff69b4,
+        0 0 60px #ff69b4;
+      animation: neonFlicker 3s infinite alternate;
+      user-select: none;
+    }
+
+    h2 {
+      font-size: 1.4rem;
+      color: #ff69b4cc;
+      margin-bottom: 10px;
+      letter-spacing: 2px;
+      filter: drop-shadow(0 0 3px #ff69b4);
+      user-select: none;
+    }
+
+    #days {
+      font-size: 2rem;
+      color: #ffb6c1;
+      margin-bottom: 40px;
+      text-shadow:
+        0 0 8px #ffb6c1,
+        0 0 16px #ff69b4;
+      user-select: none;
+    }
+
+    #poem {
+      max-width: 600px;
+      font-size: 1.6rem;
+      line-height: 1.6;
+      padding: 20px;
+      border: 2px solid #ff69b4;
+      border-radius: 15px;
+      box-shadow:
+        0 0 10px #ff69b4,
+        0 0 30px #ff69b4;
+      background: rgba(255, 105, 180, 0.05);
+      margin-bottom: 50px;
+      white-space: pre-line;
+      user-select: text;
+    }
+
+    button {
+      font-family: 'VT323', monospace;
+      font-size: 1.4rem;
+      padding: 14px 36px;
+      border: 2px solid #ff69b4;
+      border-radius: 12px;
+      background: transparent;
+      color: #ff69b4;
+      cursor: pointer;
+      text-shadow: 0 0 8px #ff69b4;
+      transition: background 0.3s ease, color 0.3s ease, transform 0.2s ease;
+      user-select: none;
+      margin-bottom: 20px;
+      letter-spacing: 1.5px;
+      position: relative;
+      z-index: 10;
+    }
+
+    button:hover {
+      background: #ff69b4;
+      color: #000;
+      box-shadow:
+        0 0 20px #ff69b4,
+        0 0 40px #ff69b4;
+      transform: scale(1.1);
+    }
+
+    #hearts-container {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      pointer-events: none;
+      overflow: visible;
+      z-index: 5;
+    }
+
+    .heart {
+      position: absolute;
+      color: #ff69b4;
+      text-shadow:
+        0 0 12px #ff69b4,
+        0 0 24px #ff69b4,
+        0 0 36px #ff69b4;
+      font-size: 1.8rem;
+      animation: dropDownNeon linear forwards;
+      opacity: 0.85;
+      user-select: none;
+      filter: drop-shadow(0 0 5px #ff69b4);
+    }
+
+    @keyframes neonFlicker {
+      0%, 19%, 21%, 23%, 25%, 54%, 56%, 100% {
+        opacity: 1;
+        text-shadow:
+          0 0 10px #ff69b4,
+          0 0 20px #ff69b4,
+          0 0 30px #ff69b4,
+          0 0 40px #ff69b4,
+          0 0 60px #ff69b4;
+      }
+      20%, 22%, 24%, 55% {
+        opacity: 0.6;
+        text-shadow: none;
+      }
+    }
+
+    @keyframes dropDownNeon {
+      0% {
+        transform: translateY(-50px) scale(1);
+        opacity: 0;
+      }
+      20% {
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(100vh) scale(1.8);
+        opacity: 0;
+      }
+    }
+
+    @media (max-width: 600px) {
+      h1 {
+        font-size: 2.8rem;
+      }
+      h2 {
+        font-size: 1.1rem;
+        margin-bottom: 10px;
+      }
+      #days {
+        font-size: 1.6rem;
+        margin-bottom: 30px;
+      }
+      #poem {
+        font-size: 1.2rem;
+        padding: 15px;
+        max-width: 90vw;
+      }
+      button {
+        font-size: 1.2rem;
+        padding: 12px 28px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <h1>💖 National Girlfriend Day 💖</h1>
+  <h2>Celebrating Our Journey Together</h2>
+
+  <div id="days"></div>
+
+  <div id="poem">
+    Every moment spent with you,  
+    Feels so warm, so sweet, so true.  
+
+    Your smile lights my darkest night,  
+    Your voice makes everything feel right.  
+
+    You are my peace, my heart, my song,  
+    With you is where I feel I belong.
+  </div>
+
+  <button id="loveBtn">Touch Me 💖</button>
+
+  <div id="hearts-container"></div>
+
+  <script>
+    // Set days together counter
+    const startDate = new Date("2023-08-05");
+    const today = new Date();
+    const timeDiff = today - startDate;
+    const daysTogether = Math.floor(timeDiff / (1000 * 60 * 60 * 24));
+    document.getElementById("days").textContent = `${daysTogether} days and counting...`;
+
+    // Neon heart drop effect
+    const heartsContainer = document.getElementById('hearts-container');
+    const loveBtn = document.getElementById('loveBtn');
+
+    function createHeart() {
+      const heart = document.createElement('div');
+      heart.classList.add('heart');
+      heart.style.left = Math.random() * 95 + 'vw';
+      heart.style.fontSize = (14 + Math.random() * 22) + 'px';
+      heart.style.animationDuration = (4 + Math.random() * 3) + 's';
+      heart.style.color = `hsl(${Math.random() * 30 + 320}, 100%, 75%)`;
+      heart.textContent = '❤';
+      heartsContainer.appendChild(heart);
+
+      setTimeout(() => {
+        heart.remove();
+      }, parseFloat(heart.style.animationDuration) * 1000);
+    }
+
+    loveBtn.addEventListener('click', () => {
+      for(let i = 0; i < 25; i++) {
+        setTimeout(createHeart, i * 120);
+      }
+    });
+  </script>
+
+</body>
+</html>
